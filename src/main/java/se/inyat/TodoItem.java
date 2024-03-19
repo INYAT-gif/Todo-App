@@ -47,9 +47,6 @@ public class TodoItem {
     }
 
     public void setDone (boolean done) {
-        if (done == null) {
-            throw new IllegalArgumentException("Done cannot be null");
-        }
         this.done = done;
     }
 
@@ -62,15 +59,6 @@ public class TodoItem {
         this.creator = creator;
 
     }
-    // Getter and setter for taskDescription
-    public String getTaskDescription() {
-        return taskDescription;
-    }
-
-    public void setTaskDescription(String taskDescription) {
-        this.taskDescription = taskDescription;
-    }
-
     // Method to check if the item is overdue
     public boolean isOverdue() {
         return LocalDate.now().isAfter(deadLine);
