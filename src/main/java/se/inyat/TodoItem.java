@@ -14,18 +14,19 @@ public class TodoItem {
     // Constructor
     public TodoItem(int id, String title, String taskDescription, LocalDate deadLine, boolean done, Person creator) {
         this.id = id;
-        this.title = title;
-        this.taskDescription = taskDescription;
+        setTitle(title);
+        setTaskDescription(taskDescription);
         this.deadLine = deadLine;
-        this.done = done;
+        this.done = true;
         this.creator = creator;
     }
 
-    // Getter and setter for title
-    public String getTitle() {
+    public void setId(int id){
+        this.id = id;
+    }
+    public String getTitle(){
         return title;
     }
-
     public void setTitle (String title) {
         if (title == null) {
             throw new IllegalArgumentException("Title cannot be null");
@@ -42,16 +43,19 @@ public class TodoItem {
         this.taskDescription = taskDescription;
     }
     // Getter and setter for done
-    public boolean done() {
+    public boolean isDone() {
+
         return done;
     }
 
     public void setDone (boolean done) {
+
         this.done = done;
     }
 
     // Getter and setter for creator
     public Person getCreator() {
+
         return creator;
     }
 
@@ -61,6 +65,7 @@ public class TodoItem {
     }
     // Method to check if the item is overdue
     public boolean isOverdue() {
+
         return LocalDate.now().isAfter(deadLine);
     }
 
