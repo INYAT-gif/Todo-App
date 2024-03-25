@@ -50,13 +50,15 @@ public class AppUser {
         this.role = role;
     }
 
-    //Methods
-    //override toString() to exclude password
     @Override
-    public String toString(){
-        return "AppUser{" + "username='" + username+ '\'' + ", role=" + role + '}';
-
+    public String toString() {
+        return "AppUser{" +
+                "username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", role=" + role +
+                '}';
     }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
