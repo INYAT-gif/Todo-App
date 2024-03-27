@@ -1,18 +1,19 @@
 package se.inyat;
+import java.util.Objects;
 
 public class Person {
-    // Fields
     private int id;
     private String firstName;
     private String lastName;
     private String email;
+    private AppUser credentials; // Reference to AppUser
 
-    // Constructor
-    public Person(int id, String firstName, String lastName, String email) {
+    public Person(int id, String firstName, String lastName, String email, AppUser credentials) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.credentials = credentials;
     }
 
     // Getters and Setters
@@ -29,9 +30,6 @@ public class Person {
     }
 
     public void setFirstName(String firstName) {
-        if (firstName == null || firstName.trim().isEmpty()) {
-            throw new IllegalArgumentException("First name cannot be null or empty");
-        }
         this.firstName = firstName;
     }
 
@@ -40,9 +38,6 @@ public class Person {
     }
 
     public void setLastName(String lastName) {
-        if (lastName == null || lastName.trim().isEmpty()) {
-            throw new IllegalArgumentException("Last name cannot be null or empty");
-        }
         this.lastName = lastName;
     }
 
@@ -51,14 +46,35 @@ public class Person {
     }
 
     public void setEmail(String email) {
-        if (email == null || email.trim().isEmpty()) {
-            throw new IllegalArgumentException("Email cannot be null or empty");
-        }
         this.email = email;
     }
 
-    // Method to get a summary of the Person object
-    public String getSummary() {
+    public AppUser getCredentials() {
+        return credentials;
+    }
+
+    public void setCredentials(AppUser credentials) {
+        this.credentials = credentials;
+    }
+
+    @Override
+    public String toString() {
         return "{id: " + id + ", name: " + firstName + " " + lastName + ", email: " + email + "}";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Person person = (Person) obj;
+        return id == person.id &&
+                firstName.equals(person.firstName) &&
+                lastName.equals(person.lastName) &&
+                email.equals(person.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, firstName, lastName, email);
     }
 }
